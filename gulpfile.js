@@ -4,8 +4,6 @@ var watch = require('gulp-watch');
 var concat = require('gulp-concat');
 var cssmin = require('gulp-cssmin');
 var browserSync = require('browser-sync');
-var postcss = require('gulp-postcss');
-var tailwindcss = require('tailwindcss')
 
 gulp.task('browserSync', function() {
     browserSync({
@@ -21,10 +19,6 @@ gulp.task('browserSync', function() {
 
 gulp.task('sass', function () {
 	return gulp.src('scss/app.scss')
-	.pipe(postcss([
-		tailwindcss('tailwind.js'),
-		require('autoprefixer'),
-	]))
 	.pipe(sass().on('error', sass.logError))
 	.pipe(concat('styles.min.css'))
 	.pipe(cssmin())
@@ -43,3 +37,5 @@ gulp.task('default', ['browserSync', 'sass'], function() {
 	gulp.watch('scss/**', ['sass']);
 	gulp.watch('*.html', ['html']);
 });
+
+gulp.task('build', ['sass'])
