@@ -1,5 +1,237 @@
-/* Vars */
+body {
+  margin: 0;
+  font-family: 'Helvetica', 'system-ui', 'sans-serif';
+}
 
-/* Base Styles */
+img {
+  width: 100%;
+}
 
-/* App Styles */
+p {
+  margin-top: 0;
+}
+
+.popup {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0,0,0,.75);
+  z-index: 9999;
+  .close {
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.5;
+    cursor: pointer;
+    &:hover {
+      opacity: 1;
+    }
+    &:before,
+    &:after {
+      position: absolute;
+      left: 15px;
+      content: ' ';
+      height: 33px;
+      width: 2px;
+      background-color: #fff;
+    }
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  img {
+    max-width: 70%;
+  }
+  &.is-active {
+    display: flex;
+  }
+}
+
+.hamburger {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  width: 30px;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100;
+  .line {
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    display: block;
+    margin: 8px auto;
+    transition: all 0.3s ease-in-out;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &.is-active {
+    .line:nth-child(1),
+    .line:nth-child(3) {
+      width: 30px;
+    }
+    .line:nth-child(1) {
+      transform: translateX(-10px) rotate(-45deg);
+    }
+    .line:nth-child(3) {
+      transform: translateX(-10px) rotate(45deg);
+    }
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+section {
+  position: relative;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  svg {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    margin-left: -31px;
+  }
+  .content {
+    margin: 20px 22px 20px 220px;
+    @media (max-width: 768px) {
+      margin: 36px 36px;
+    }
+  }
+}
+
+/*  nav
+========================================================================== */
+aside {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 198px;
+  background: rgba(42, 42, 42, .9);
+  z-index: 10;
+  transition: 300ms ease;
+  .logo {
+    padding: 3.75rem 1rem 0;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 33vh;
+    margin: 5rem 0;
+    a {
+      color: #fff;
+      font-size: 40px;
+      text-decoration: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    transform: translateX(-100%);
+    &.is-open {
+      transform: translateX(0%);
+    }
+  }
+}
+
+.hero {
+  background-image: url(../images/cover.jpg);
+  img {
+    display: none;
+    width: auto;
+    margin: 0 auto;
+    max-width: 50%;
+    padding-top: 10%;
+
+    @media (max-width: 768px) {
+     display: block;
+    }
+  }
+}
+
+#about {
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #BC0000;
+    opacity: .75;
+    content: '';
+  }
+
+  > * {
+    z-index: 1;
+  }
+
+  background-image: url(../images/pismo.jpg);
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  line-height: 1.75;
+
+  .col {
+    width: 60%;
+    margin-bottom: 100px;
+    &:first-of-type {
+      margin-left: 80px;
+    }
+    &:last-of-type {
+      margin-left: 220px;
+    }
+
+    @media (max-width: 768px) {
+      width: 100%;
+      text-align: center;
+      &:first-of-type,
+      &:last-of-type {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+#gallery {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-auto-rows: 150px;
+    grid-gap: 1rem;
+    .grid-item {
+      overflow: hidden;
+      img {
+        object-fit: cover;
+        height: 100%;
+      }
+    }
+    &:empty {
+      position: relative;
+      &:before {
+        content: 'Loading...';
+        display: block;
+      }
+    }
+  }
+}

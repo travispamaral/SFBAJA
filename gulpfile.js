@@ -4,6 +4,8 @@ var watch = require('gulp-watch');
 var concat = require('gulp-concat');
 var cssmin = require('gulp-cssmin');
 var browserSync = require('browser-sync');
+var postcss = require('gulp-postcss');
+var tailwindcss = require('tailwindcss')
 
 gulp.task('browserSync', function() {
     browserSync({
@@ -19,6 +21,10 @@ gulp.task('browserSync', function() {
 
 gulp.task('sass', function () {
 	return gulp.src('scss/app.scss')
+	.pipe(postcss([
+		tailwindcss('tailwind.js'),
+		require('autoprefixer'),
+	]))
 	.pipe(sass().on('error', sass.logError))
 	.pipe(concat('styles.min.css'))
 	.pipe(cssmin())
@@ -26,22 +32,10 @@ gulp.task('sass', function () {
 	.pipe(browserSync.reload({stream: true}))
 });
 
-/*
-gulp.task('styles-deploy', function() {
-	return gulp.src('scss/app.scss')
-	.pipe(concat('styles.min.css'))
-	.pipe(cssmin())
-	//where to save our final, compressed css file
-	.pipe(gulp.dest('css'));
-});
-*/
-
 gulp.task('html', function() {
 	//watch any and all HTML files and refresh when something changes
 	return gulp.src('*.html')
 	.pipe(browserSync.reload({stream: true}))
-	//catch errors
-	.on('error', gutil.log)
 });
 
 gulp.task('default', ['browserSync', 'sass'], function() {

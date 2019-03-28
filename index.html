@@ -2,13 +2,75 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-	<link rel="stylesheet" href="css/foundation.min.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+	<meta name="theme-color" content="#000">
+
+	<title>San Francisco Bay Area Jeep Association</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/glightbox.min.css">
 	<link rel="stylesheet" href="css/styles.min.css">
 </head>
 <body>
 
-	<script src="js/app.min.js"></script>
+	<div class="hamburger">
+		<span class="line"></span>
+		<span class="line"></span>
+		<span class="line"></span>
+	</div>
+
+	<aside class="menu" role="navigation">
+		<a href="#home">
+			<div class="logo">
+				<img src="images/SFBAJA-Logo-White.png" alt="SFBAJA Logo">
+			</div>
+		</a>
+		<nav>
+			<a href="#about">About</a>
+			<a href="#gallery">Gallery</a>
+		</nav>
+	</aside>
+
+	<main role="main">
+		<section id="home" class="hero">
+			<img src="images/SFBAJA-Logo-White.png" alt="SFBAJA Logo">
+			<a href="#about">
+				<svg xmlns="http://www.w3.org/2000/svg" width="62" height="62">
+					<g fill="none" fill-rule="evenodd" stroke="#FFF" stroke-width="2" transform="translate(11 11)">
+						<circle cx="20" cy="20" r="20"/>
+						<path d="M29.68659041 17.40754517H10.27135644l9.70761698 9.70761698 9.70761699-9.70761698z"/>
+					</g>
+				</svg>
+			</a>
+		</section>
+
+		<section id="about">
+			<div class="content">
+				<div class="col">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				</div>
+				<div class="col">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="gallery">
+			<div class="grid content"></div>
+		</section>
+	</main>
+
+	<div class="popup">
+		<a class="close"></a>
+		<img src="#">
+	</div>
+
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="js/glightbox.min.js"></script>
+	<script src="js/site.js"></script>
 </body>
 </html>
